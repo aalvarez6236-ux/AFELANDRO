@@ -35,6 +35,7 @@ padding:15px;
 box-sizing:border-box;
 }
 
+/* CONTENIDO */
 .content{
 width:100%;
 max-width:420px;
@@ -50,7 +51,7 @@ scrollbar-width:none;
 display:none;
 }
 
-/* ===== TARJETA ===== */
+/* TARJETA */
 .container{
 background:rgba(255,255,255,0.12);
 backdrop-filter:blur(14px);
@@ -102,6 +103,12 @@ height:210px;
 border:none;
 }
 
+/* ===== ANIMACION GLOBAL ===== */
+@keyframes buttonPop{
+0%{opacity:0; transform:scale(.85);}
+100%{opacity:1; transform:scale(1);}
+}
+
 /* REDES */
 .social{
 display:flex;
@@ -118,6 +125,14 @@ font-weight:bold;
 display:flex;
 justify-content:center;
 gap:10px;
+
+animation:buttonPop .7s ease;
+transition:.3s;
+cursor:pointer;
+}
+
+.btn-social:hover{
+transform:scale(1.05);
 }
 
 .instagram{background:linear-gradient(90deg,#ff3cac,#d85eff);}
@@ -129,7 +144,7 @@ background:linear-gradient(90deg,#ff0000,#ff3b3b);
 box-shadow:0 0 10px rgba(255,0,0,.8);
 }
 
-/* BOTON GENERAL */
+/* BOTONES GENERALES */
 .btn{
 margin-top:12px;
 padding:10px 20px;
@@ -139,26 +154,34 @@ border:none;
 border-radius:25px;
 font-weight:bold;
 cursor:pointer;
+
+animation:buttonPop .7s ease;
+transition:.3s;
 }
 
-/* ===== PAGINA 2 ===== */
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* PAGINA 2 */
 .ad-title{
 font-size:28px;
 }
 
-/* LOGO PREMIUM */
+/* LOGO BOTON PREMIUM */
 .ad-logo{
 width:140px;
 max-width:80%;
 margin:18px auto;
 display:block;
 border-radius:14px;
+cursor:pointer;
 
 box-shadow:
 0 0 12px rgba(255,255,255,.25),
 0 0 25px rgba(140,120,255,.45);
 
-animation:logoPop .8s ease;
+animation:buttonPop .8s ease;
 transition:.3s;
 }
 
@@ -167,22 +190,6 @@ transform:scale(1.05);
 box-shadow:
 0 0 18px rgba(255,255,255,.35),
 0 0 35px rgba(140,120,255,.6);
-}
-
-@keyframes logoPop{
-0%{opacity:0; transform:scale(.8);}
-100%{opacity:1; transform:scale(1);}
-}
-
-.ad-btn{
-display:inline-block;
-margin-top:18px;
-padding:13px 22px;
-border-radius:25px;
-background:linear-gradient(90deg,#ff3cac,#784ba0);
-color:white;
-text-decoration:none;
-font-weight:bold;
 }
 
 /* INDICADORES */
@@ -269,14 +276,10 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 
 <h1 class="ad-title">🔥 Publicidad</h1>
 
+<a href="https://creativetouchshop.com/" target="_blank">
 <img class="ad-logo"
 src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cropped-cropped-IMG_1562.png"
 alt="Logo empresa">
-
-<a class="ad-btn"
-href="https://creativetouchshop.com/"
-target="_blank">
-🌐 CreativeTouchShop
 </a>
 
 <br>
@@ -322,4 +325,3 @@ if(diff<-60 && current===1) goTo(0);
 
 </body>
 </html>
-
