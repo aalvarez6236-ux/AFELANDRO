@@ -17,7 +17,8 @@ overflow:hidden;
 color:white;
 }
 
-/* ===== FONDO CREATOR ===== */
+/* ================= FONDO CREATOR ================= */
+
 .floating-bg{
 position:fixed;
 top:0;
@@ -31,29 +32,33 @@ pointer-events:none;
 
 .floating-bg span{
 position:absolute;
-width:20px;
-height:20px;
+width:18px;
+height:18px;
 background:linear-gradient(45deg,#ff8c00,#ffb347);
 border-radius:50%;
 opacity:.6;
 filter:blur(1px);
-animation:floatBall 15s linear infinite;
+animation:freeBall 18s ease-in-out infinite alternate;
 }
 
-.floating-bg span:nth-child(1){top:10%;left:20%;}
-.floating-bg span:nth-child(2){top:70%;left:15%;animation-duration:20s;}
-.floating-bg span:nth-child(3){top:40%;left:80%;animation-duration:18s;}
-.floating-bg span:nth-child(4){top:80%;left:60%;animation-duration:22s;}
+/* posiciones iniciales distintas */
+.floating-bg span:nth-child(1){top:10%;left:20%;animation-duration:18s;}
+.floating-bg span:nth-child(2){top:70%;left:15%;animation-duration:22s;}
+.floating-bg span:nth-child(3){top:40%;left:80%;animation-duration:20s;}
+.floating-bg span:nth-child(4){top:80%;left:60%;animation-duration:24s;}
+.floating-bg span:nth-child(5){top:30%;left:50%;animation-duration:19s;}
+.floating-bg span:nth-child(6){top:60%;left:75%;animation-duration:23s;}
 
-@keyframes floatBall{
-0%{transform:translate(0,0);}
-25%{transform:translate(90px,-120px);}
-50%{transform:translate(-120px,-60px);}
-75%{transform:translate(80px,100px);}
-100%{transform:translate(0,0);}
+@keyframes freeBall{
+0%   {transform:translate(0,0);}
+25%  {transform:translate(200px,-150px);}
+50%  {transform:translate(-180px,120px);}
+75%  {transform:translate(150px,180px);}
+100% {transform:translate(-120px,-100px);}
 }
 
-/* ===== SLIDER ===== */
+/* ================= SLIDER ================= */
+
 .slider{
 display:flex;
 width:200vw;
@@ -83,7 +88,6 @@ scrollbar-width:none;
 
 .content::-webkit-scrollbar{display:none;}
 
-/* TARJETA */
 .container{
 background:rgba(255,255,255,0.12);
 backdrop-filter:blur(14px);
@@ -93,16 +97,17 @@ text-align:center;
 box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
-/* FOTO */
-.profile-wrapper{
-display:flex;
-justify-content:center;
-margin-top:-70px;
-}
+/* ================= FOTO ================= */
 
 @keyframes breathingGlow{
 0%,100%{box-shadow:0 0 20px rgba(120,150,255,.6);}
 50%{box-shadow:0 0 35px rgba(120,150,255,1);}
+}
+
+.profile-wrapper{
+display:flex;
+justify-content:center;
+margin-top:-70px;
 }
 
 .profile-img{
@@ -113,11 +118,18 @@ border:4px solid white;
 object-fit:contain;
 background:#fff;
 animation:breathingGlow 3.5s ease-in-out infinite;
+transition:.3s;
+cursor:pointer;
 }
 
-/* TEXTOS */
+.profile-img:hover{
+transform:scale(1.05);
+}
+
+/* ================= TEXTOS ================= */
+
 h1{
-font-size:36px;
+font-size:34px;
 margin:12px 0 5px;
 }
 
@@ -134,7 +146,8 @@ min-height:24px;
 margin-bottom:12px;
 }
 
-/* VIDEO */
+/* ================= VIDEO ================= */
+
 .video{
 margin:12px 0;
 border-radius:14px;
@@ -147,17 +160,23 @@ height:210px;
 border:none;
 }
 
-/* ANIMACION BOTONES */
+/* ================= BOTONES ================= */
+
 @keyframes buttonPop{
 0%{opacity:0;transform:scale(.85);}
 100%{opacity:1;transform:scale(1);}
 }
 
-/* REDES */
 .social{
 display:flex;
 flex-direction:column;
 gap:9px;
+}
+
+.btn-social,
+.btn{
+animation:buttonPop .7s ease;
+transition:.3s;
 }
 
 .btn-social{
@@ -169,24 +188,21 @@ font-weight:bold;
 display:flex;
 justify-content:center;
 gap:10px;
-animation:buttonPop .7s ease;
-transition:.3s;
 }
 
-.btn-social:hover{transform:scale(1.05);}
+.btn-social:hover,
+.btn:hover{
+transform:scale(1.05);
+}
 
 .instagram{background:linear-gradient(90deg,#ff3cac,#d85eff);}
 .facebook{background:linear-gradient(90deg,#2f7fff,#54d2ff);}
 .tiktok{background:linear-gradient(90deg,#000,#333);}
 .linkedin{background:linear-gradient(90deg,#0a66c2,#1da1ff);}
-.youtube{
-background:linear-gradient(90deg,#ff0000,#ff3b3b);
-box-shadow:0 0 10px rgba(255,0,0,.8);
-}
+.youtube{background:linear-gradient(90deg,#ff0000,#ff3b3b);}
 
-/* BOTON GENERAL */
 .btn{
-margin-top:12px;
+margin-top:10px;
 padding:10px 20px;
 background:#ff3b3b;
 color:white;
@@ -194,13 +210,10 @@ border:none;
 border-radius:25px;
 font-weight:bold;
 cursor:pointer;
-animation:buttonPop .7s ease;
-transition:.3s;
 }
 
-.btn:hover{transform:scale(1.05);}
+/* ================= PUBLICIDAD ================= */
 
-/* PAGINA 2 */
 .ad-title{font-size:28px;}
 
 .ad-logo{
@@ -210,10 +223,6 @@ margin:18px auto;
 display:block;
 border-radius:14px;
 cursor:pointer;
-box-shadow:
-0 0 12px rgba(255,255,255,.25),
-0 0 25px rgba(140,120,255,.45);
-animation:buttonPop .8s ease;
 transition:.3s;
 }
 
@@ -221,7 +230,8 @@ transition:.3s;
 transform:scale(1.05);
 }
 
-/* INDICADORES */
+/* ================= INDICADORES ================= */
+
 .indicators{
 position:fixed;
 bottom:18px;
@@ -245,9 +255,9 @@ border-radius:20px;
 background:white;
 }
 
-/* RESPONSIVE */
+/* Responsive */
 @media(max-width:480px){
-h1{font-size:30px;}
+h1{font-size:28px;}
 .subtitle{font-size:18px;}
 .profile-img{width:120px;height:120px;}
 iframe{height:190px;}
@@ -259,7 +269,8 @@ iframe{height:190px;}
 <body>
 
 <div class="floating-bg">
-<span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span>
+<span></span><span></span><span></span>
 </div>
 
 <div class="slider" id="slider">
@@ -288,6 +299,10 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 <a class="btn-social tiktok" href="https://www.tiktok.com/@alejandrojuarez03" target="_blank">TikTok</a>
 <a class="btn-social linkedin" href="https://www.linkedin.com/in/alejandro-alberto-juarez-alvarez-803275123/" target="_blank">LinkedIn</a>
 <a class="btn-social youtube" href="https://www.youtube.com/@afelandro4578" target="_blank">YouTube</a>
+
+<a class="btn" href="mailto:afelandrochisme@gmail.com?subject=Quiero enviarte mi historia&body=Hola Afelandro, quiero compartir mi historia contigo:">
+✉️ Enviar tu historia
+</a>
 </div>
 
 <button class="btn" onclick="goTo(1)">Ver Publicidad ➡️</button>
@@ -323,7 +338,6 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/crop
 
 <script>
 
-/* SLIDER */
 let slider=document.getElementById("slider");
 let current=0;
 
@@ -334,7 +348,6 @@ document.getElementById("dot0").classList.toggle("active",p===0);
 document.getElementById("dot1").classList.toggle("active",p===1);
 }
 
-/* SWIPE MOVIL */
 let startX=0;
 slider.addEventListener("touchstart",e=>{
 startX=e.touches[0].clientX;
@@ -345,7 +358,6 @@ if(diff>60 && current===0) goTo(1);
 if(diff<-60 && current===1) goTo(0);
 });
 
-/* TEXTO CREATOR */
 const texts=[
 "🎥 Creator",
 "🌍 Vida en Bélgica",
