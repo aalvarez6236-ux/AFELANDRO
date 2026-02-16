@@ -358,6 +358,9 @@ current=p;
 slider.style.transform=`translateX(-${p*100}vw)`;
 document.getElementById("dot0").classList.toggle("active",p===0);
 document.getElementById("dot1").classList.toggle("active",p===1);
+
+/* CORRECCIÓN DEL ERROR */
+window.scrollTo({top:0,behavior:"instant"});
 }
 
 let startX=0,startY=0;
