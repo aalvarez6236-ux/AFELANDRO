@@ -17,6 +17,42 @@ overflow:hidden;
 color:white;
 }
 
+/* ===== FONDO CREATOR ===== */
+.floating-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-1;
+pointer-events:none;
+}
+
+.floating-bg span{
+position:absolute;
+width:20px;
+height:20px;
+background:linear-gradient(45deg,#ff8c00,#ffb347);
+border-radius:50%;
+opacity:.6;
+filter:blur(1px);
+animation:floatBall 15s linear infinite;
+}
+
+.floating-bg span:nth-child(1){top:10%;left:20%;}
+.floating-bg span:nth-child(2){top:70%;left:15%;animation-duration:20s;}
+.floating-bg span:nth-child(3){top:40%;left:80%;animation-duration:18s;}
+.floating-bg span:nth-child(4){top:80%;left:60%;animation-duration:22s;}
+
+@keyframes floatBall{
+0%{transform:translate(0,0);}
+25%{transform:translate(90px,-120px);}
+50%{transform:translate(-120px,-60px);}
+75%{transform:translate(80px,100px);}
+100%{transform:translate(0,0);}
+}
+
 /* ===== SLIDER ===== */
 .slider{
 display:flex;
@@ -35,21 +71,17 @@ padding:15px;
 box-sizing:border-box;
 }
 
-/* CONTENIDO */
 .content{
 width:100%;
 max-width:420px;
 height:92vh;
 overflow-y:auto;
 padding-top:50px;
-
 scrollbar-width:none;
 -ms-overflow-style:none;
 }
 
-.content::-webkit-scrollbar{
-display:none;
-}
+.content::-webkit-scrollbar{display:none;}
 
 /* TARJETA */
 .container{
@@ -68,6 +100,11 @@ justify-content:center;
 margin-top:-70px;
 }
 
+@keyframes breathingGlow{
+0%,100%{box-shadow:0 0 20px rgba(120,150,255,.6);}
+50%{box-shadow:0 0 35px rgba(120,150,255,1);}
+}
+
 .profile-img{
 width:140px;
 height:140px;
@@ -75,18 +112,25 @@ border-radius:50%;
 border:4px solid white;
 object-fit:contain;
 background:#fff;
-box-shadow:0 0 25px rgba(120,150,255,.8);
+animation:breathingGlow 3.5s ease-in-out infinite;
 }
 
 /* TEXTOS */
 h1{
-font-size:42px;
+font-size:36px;
 margin:12px 0 5px;
 }
 
 .subtitle{
-font-size:24px;
+font-size:20px;
 font-weight:bold;
+margin-bottom:6px;
+}
+
+.creator-text{
+font-size:16px;
+opacity:.9;
+min-height:24px;
 margin-bottom:12px;
 }
 
@@ -103,10 +147,10 @@ height:210px;
 border:none;
 }
 
-/* ===== ANIMACION GLOBAL ===== */
+/* ANIMACION BOTONES */
 @keyframes buttonPop{
-0%{opacity:0; transform:scale(.85);}
-100%{opacity:1; transform:scale(1);}
+0%{opacity:0;transform:scale(.85);}
+100%{opacity:1;transform:scale(1);}
 }
 
 /* REDES */
@@ -125,15 +169,11 @@ font-weight:bold;
 display:flex;
 justify-content:center;
 gap:10px;
-
 animation:buttonPop .7s ease;
 transition:.3s;
-cursor:pointer;
 }
 
-.btn-social:hover{
-transform:scale(1.05);
-}
+.btn-social:hover{transform:scale(1.05);}
 
 .instagram{background:linear-gradient(90deg,#ff3cac,#d85eff);}
 .facebook{background:linear-gradient(90deg,#2f7fff,#54d2ff);}
@@ -144,7 +184,7 @@ background:linear-gradient(90deg,#ff0000,#ff3b3b);
 box-shadow:0 0 10px rgba(255,0,0,.8);
 }
 
-/* BOTONES GENERALES */
+/* BOTON GENERAL */
 .btn{
 margin-top:12px;
 padding:10px 20px;
@@ -154,21 +194,15 @@ border:none;
 border-radius:25px;
 font-weight:bold;
 cursor:pointer;
-
 animation:buttonPop .7s ease;
 transition:.3s;
 }
 
-.btn:hover{
-transform:scale(1.05);
-}
+.btn:hover{transform:scale(1.05);}
 
 /* PAGINA 2 */
-.ad-title{
-font-size:28px;
-}
+.ad-title{font-size:28px;}
 
-/* LOGO BOTON PREMIUM */
 .ad-logo{
 width:140px;
 max-width:80%;
@@ -176,20 +210,15 @@ margin:18px auto;
 display:block;
 border-radius:14px;
 cursor:pointer;
-
 box-shadow:
 0 0 12px rgba(255,255,255,.25),
 0 0 25px rgba(140,120,255,.45);
-
 animation:buttonPop .8s ease;
 transition:.3s;
 }
 
 .ad-logo:hover{
 transform:scale(1.05);
-box-shadow:
-0 0 18px rgba(255,255,255,.35),
-0 0 35px rgba(140,120,255,.6);
 }
 
 /* INDICADORES */
@@ -218,17 +247,10 @@ background:white;
 
 /* RESPONSIVE */
 @media(max-width:480px){
-
-h1{font-size:32px;}
-.subtitle{font-size:20px;}
-
-.profile-img{
-width:120px;
-height:120px;
-}
-
+h1{font-size:30px;}
+.subtitle{font-size:18px;}
+.profile-img{width:120px;height:120px;}
 iframe{height:190px;}
-
 }
 
 </style>
@@ -236,9 +258,13 @@ iframe{height:190px;}
 
 <body>
 
+<div class="floating-bg">
+<span></span><span></span><span></span><span></span>
+</div>
+
 <div class="slider" id="slider">
 
-<!-- ===== PANTALLA 1 ===== -->
+<!-- PANTALLA 1 -->
 <div class="page">
 <div class="content">
 <div class="container">
@@ -250,6 +276,7 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 
 <h1>Hola, soy Afelandro 🚀</h1>
 <p class="subtitle">Bienvenido a mi mundo</p>
+<div class="creator-text" id="creatorText">🎥 Creator</div>
 
 <div class="video">
 <iframe src="https://www.youtube.com/embed/Pkvwv_Q50tk" allowfullscreen></iframe>
@@ -269,7 +296,7 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 </div>
 </div>
 
-<!-- ===== PANTALLA 2 ===== -->
+<!-- PANTALLA 2 -->
 <div class="page">
 <div class="content">
 <div class="container">
@@ -278,11 +305,9 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 
 <a href="https://creativetouchshop.com/" target="_blank">
 <img class="ad-logo"
-src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cropped-cropped-IMG_1562.png"
-alt="Logo empresa">
+src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cropped-cropped-IMG_1562.png">
 </a>
 
-<br>
 <button class="btn" onclick="goTo(0)">⬅️ Volver</button>
 
 </div>
@@ -298,6 +323,7 @@ alt="Logo empresa">
 
 <script>
 
+/* SLIDER */
 let slider=document.getElementById("slider");
 let current=0;
 
@@ -310,16 +336,28 @@ document.getElementById("dot1").classList.toggle("active",p===1);
 
 /* SWIPE MOVIL */
 let startX=0;
-
 slider.addEventListener("touchstart",e=>{
 startX=e.touches[0].clientX;
 });
-
 slider.addEventListener("touchend",e=>{
 let diff=startX-e.changedTouches[0].clientX;
 if(diff>60 && current===0) goTo(1);
 if(diff<-60 && current===1) goTo(0);
 });
+
+/* TEXTO CREATOR */
+const texts=[
+"🎥 Creator",
+"🌍 Vida en Bélgica",
+"🔥 Motivación diaria",
+"✨ Afelandro vibes"
+];
+
+let i=0;
+setInterval(()=>{
+i=(i+1)%texts.length;
+document.getElementById("creatorText").textContent=texts[i];
+},2500);
 
 </script>
 
