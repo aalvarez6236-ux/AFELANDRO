@@ -9,17 +9,16 @@
 
 <style>
 
-/* ================= BASE ================= */
-
 body{
 margin:0;
 font-family:Arial, sans-serif;
 background: radial-gradient(circle,#7a6dc4,#4b4f9e,#2b2b68);
 overflow-x:hidden;
+overflow-y:auto;
 color:white;
 }
 
-/* ================= FONDO BOLITAS ================= */
+/* ===== FONDO BOLITAS ===== */
 
 .floating-bg{
 position:fixed;
@@ -37,28 +36,32 @@ width:18px;
 height:18px;
 background:linear-gradient(45deg,#ff8c00,#ffb347);
 border-radius:50%;
-opacity:.5;
-animation:floatBall 18s ease-in-out infinite alternate;
+opacity:.6;
+filter:blur(1px);
+animation:freeBall 20s ease-in-out infinite alternate;
 }
 
-.floating-bg span:nth-child(1){top:10%;left:20%;}
-.floating-bg span:nth-child(2){top:70%;left:15%;}
-.floating-bg span:nth-child(3){top:40%;left:80%;}
-.floating-bg span:nth-child(4){top:80%;left:60%;}
-.floating-bg span:nth-child(5){top:30%;left:50%;}
-.floating-bg span:nth-child(6){top:60%;left:75%;}
+.floating-bg span:nth-child(1){top:10%;left:20%;animation-duration:18s;}
+.floating-bg span:nth-child(2){top:70%;left:15%;animation-duration:22s;}
+.floating-bg span:nth-child(3){top:40%;left:80%;animation-duration:20s;}
+.floating-bg span:nth-child(4){top:80%;left:60%;animation-duration:24s;}
+.floating-bg span:nth-child(5){top:30%;left:50%;animation-duration:19s;}
+.floating-bg span:nth-child(6){top:60%;left:75%;animation-duration:23s;}
 
-@keyframes floatBall{
+@keyframes freeBall{
 0%{transform:translate(0,0);}
-100%{transform:translate(200px,-150px);}
+25%{transform:translate(200px,-150px);}
+50%{transform:translate(-180px,120px);}
+75%{transform:translate(150px,180px);}
+100%{transform:translate(-120px,-100px);}
 }
 
-/* ================= SLIDER ================= */
+/* ===== SLIDER ===== */
 
 .slider{
 display:flex;
 width:200vw;
-transition:transform 0.6s cubic-bezier(.22,1,.36,1);
+transition:0.6s cubic-bezier(.22,1,.36,1);
 }
 
 .page{
@@ -67,23 +70,37 @@ flex-shrink:0;
 min-height:100vh;
 display:flex;
 justify-content:center;
-align-items:center;
-padding:40px 20px;
+align-items:flex-start;
+padding:20px 15px 80px 15px;
 box-sizing:border-box;
 }
 
-.container{
+.content{
 width:100%;
-max-width:480px;
-background:rgba(255,255,255,0.1);
-backdrop-filter:blur(15px);
+max-width:420px;
+padding-top:80px;
+padding-bottom:60px;
+box-sizing:border-box;
+}
+
+/* ===== CONTENEDOR ===== */
+
+.container{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(14px);
 border-radius:25px;
-padding:30px;
+padding:20px;
 text-align:center;
 box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
-/* ================= FOTO ================= */
+/* ===== FOTO ===== */
+
+.profile-wrapper{
+display:flex;
+justify-content:center;
+margin-top:-50px;
+}
 
 .profile-img{
 width:130px;
@@ -96,88 +113,148 @@ transition:.3s;
 cursor:pointer;
 }
 
-.profile-img:hover{
+.profile-img:hover,
+.profile-img:active{
 transform:scale(1.08);
-box-shadow:0 0 20px #5cc8ff,0 0 40px #9f7bff;
+box-shadow:
+0 0 20px #5cc8ff,
+0 0 40px #9f7bff;
 }
 
-/* ================= BOTONES ================= */
+/* ===== TEXTOS ===== */
+
+h1{
+font-size:30px;
+margin:15px 0 5px;
+}
+
+.subtitle{
+font-size:18px;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.creator-text{
+font-size:15px;
+opacity:.9;
+min-height:24px;
+margin-bottom:15px;
+}
+
+/* ===== VIDEO ===== */
+
+.video{
+margin:15px 0;
+border-radius:14px;
+overflow:hidden;
+}
+
+iframe{
+width:100%;
+height:200px;
+border:none;
+}
+
+/* ===== BOTONES ===== */
+
+.social{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
 
 .btn-social{
-display:block;
 padding:12px;
-margin:8px 0;
 border-radius:25px;
 text-decoration:none;
 color:white;
 font-weight:bold;
+display:flex;
+justify-content:center;
 transition:.3s;
 }
-
-.instagram{background:linear-gradient(90deg,#ff3cac,#d85eff);}
-.facebook{background:linear-gradient(90deg,#2f7fff,#54d2ff);}
-.tiktok{background:linear-gradient(90deg,#000,#333);}
-.linkedin{background:linear-gradient(90deg,#0a66c2,#1da1ff);}
-.youtube{background:linear-gradient(90deg,#ff0000,#ff3b3b);}
-
-.btn-social:hover{
-transform:scale(1.05);
-}
-
-/* Glow por red */
-.instagram:hover{box-shadow:0 0 20px #ff3cac;}
-.facebook:hover{box-shadow:0 0 20px #2f7fff;}
-.tiktok:hover{box-shadow:0 0 20px #ffffff;}
-.linkedin:hover{box-shadow:0 0 20px #1da1ff;}
-.youtube:hover{box-shadow:0 0 20px #ff0000;}
 
 .btn{
 margin-top:15px;
 padding:12px;
-border:none;
-border-radius:25px;
-cursor:pointer;
-font-weight:bold;
 background:#ff3b3b;
 color:white;
+border:none;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
 transition:.3s;
 }
 
-.btn:hover{
+/* INSTAGRAM */
+.instagram{background:linear-gradient(90deg,#ff3cac,#d85eff);}
+.instagram:hover,
+.instagram:active{
 transform:scale(1.05);
-box-shadow:0 0 20px #ff3b3b;
+box-shadow:0 0 15px #ff3cac,0 0 30px #d85eff;
 }
 
-/* ================= SPONSORS ================= */
-
-.sponsor-card{
-margin-top:25px;
-padding:25px;
-border-radius:20px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
+/* FACEBOOK */
+.facebook{background:linear-gradient(90deg,#2f7fff,#54d2ff);}
+.facebook:hover,
+.facebook:active{
+transform:scale(1.05);
+box-shadow:0 0 15px #2f7fff,0 0 30px #54d2ff;
 }
 
-.sponsor-logo{
-max-width:200px;
-margin-bottom:15px;
+/* TIKTOK */
+.tiktok{background:linear-gradient(90deg,#000,#333);}
+.tiktok:hover,
+.tiktok:active{
+transform:scale(1.05);
+box-shadow:0 0 15px #ffffff,0 0 25px #cccccc;
+}
+
+/* LINKEDIN */
+.linkedin{background:linear-gradient(90deg,#0a66c2,#1da1ff);}
+.linkedin:hover,
+.linkedin:active{
+transform:scale(1.05);
+box-shadow:0 0 15px #0a66c2,0 0 30px #1da1ff;
+}
+
+/* YOUTUBE */
+.youtube{background:linear-gradient(90deg,#ff0000,#ff3b3b);}
+.youtube:hover,
+.youtube:active{
+transform:scale(1.05);
+box-shadow:0 0 15px #ff0000,0 0 35px #ff3b3b;
+}
+
+/* BOTÓN HISTORIA */
+.btn[href^="mailto"]:hover,
+.btn[href^="mailto"]:active{
+transform:scale(1.05);
+box-shadow:0 0 18px #9f7bff,0 0 40px #7f5cff;
+}
+
+/* ===== PUBLICIDAD ===== */
+
+.ad-title{font-size:26px;}
+
+.ad-logo{
+width:140px;
+margin:20px auto;
+display:block;
+border-radius:14px;
 transition:.3s;
 }
 
-.sponsor-logo:hover{
+.ad-logo:hover{
 transform:scale(1.05);
-box-shadow:0 0 25px rgba(255,255,255,.4);
+box-shadow:0 0 20px #9f7bff;
 }
 
-.placeholder{
-border:2px dashed rgba(255,255,255,.4);
-}
-
-/* ================= INDICADORES ================= */
+/* ===== INDICADORES ===== */
 
 .indicators{
 position:fixed;
-bottom:20px;
+bottom:18px;
 width:100%;
 display:flex;
 justify-content:center;
@@ -185,15 +262,15 @@ gap:10px;
 }
 
 .dot{
-width:10px;
-height:10px;
+width:9px;
+height:9px;
 border-radius:50%;
 background:rgba(255,255,255,.4);
 transition:.3s;
 }
 
 .dot.active{
-width:25px;
+width:24px;
 border-radius:20px;
 background:white;
 }
@@ -210,51 +287,59 @@ background:white;
 
 <div class="slider" id="slider">
 
-<!-- ================= PANTALLA 1 ================= -->
-<section class="page">
+<!-- PANTALLA 1 -->
+<div class="page">
+<div class="content">
 <div class="container">
 
+<div class="profile-wrapper">
 <img class="profile-img"
 src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92f946-3978-4fbc-b4e7-9f0fc1008f44.png">
+</div>
 
 <h1>Hola, soy Afelandro 🚀</h1>
-<p>Bienvenido a mi mundo</p>
+<p class="subtitle">Bienvenido a mi mundo</p>
+<div class="creator-text" id="creatorText">🎥 Creator</div>
 
+<div class="video">
+<iframe src="https://www.youtube.com/embed/Pkvwv_Q50tk" allowfullscreen></iframe>
+</div>
+
+<div class="social">
 <a class="btn-social instagram" href="https://www.instagram.com/afelandro2396/" target="_blank">Instagram</a>
 <a class="btn-social facebook" href="https://www.facebook.com/afelandro2396/" target="_blank">Facebook</a>
 <a class="btn-social tiktok" href="https://www.tiktok.com/@alejandrojuarez03" target="_blank">TikTok</a>
 <a class="btn-social linkedin" href="https://www.linkedin.com/in/alejandro-alberto-juarez-alvarez-803275123/" target="_blank">LinkedIn</a>
 <a class="btn-social youtube" href="https://www.youtube.com/@afelandro4578" target="_blank">YouTube</a>
 
-<a class="btn" href="mailto:afelandrochisme@gmail.com">✉️ Enviar tu historia</a>
+<a class="btn" href="mailto:afelandrochisme@gmail.com?subject=Quiero enviarte mi historia">
+✉️ Enviar tu historia
+</a>
+</div>
 
-<button class="btn" onclick="goTo(1)">Ver publicidad ➡️</button>
+<button class="btn" onclick="goTo(1)">Ver Publicidad ➡️</button>
 
 </div>
-</section>
+</div>
+</div>
 
-<!-- ================= PANTALLA 2 ================= -->
-<section class="page">
+<!-- PANTALLA 2 -->
+<div class="page">
+<div class="content">
 <div class="container">
 
-<h2>🔥 Publicidad</h2>
+<h1 class="ad-title">🔥 Publicidad</h1>
 
-<div class="sponsor-card">
-<img class="sponsor-logo"
+<a href="https://creativetouchshop.com/" target="_blank">
+<img class="ad-logo"
 src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cropped-cropped-IMG_1562.png">
-<br>
-<a class="btn" href="https://creativetouchshop.com/" target="_blank">Visitar CreativeTouchShop</a>
-</div>
+</a>
 
-<div class="sponsor-card placeholder">
-<h3>✨ Tu marca aquí</h3>
-<a class="btn" href="mailto:afelandrochisme@gmail.com">🚀 Publicita conmigo</a>
-</div>
-
-<button class="btn" onclick="goTo(0)">⬅ Volver</button>
+<button class="btn" onclick="goTo(0)">⬅️ Volver</button>
 
 </div>
-</section>
+</div>
+</div>
 
 </div>
 
@@ -265,18 +350,16 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/crop
 
 <script>
 
-let slider = document.getElementById("slider");
-let current = 0;
+let slider=document.getElementById("slider");
+let current=0;
 
 function goTo(p){
-current = p;
-slider.style.transform = `translateX(-${p*100}vw)`;
+current=p;
+slider.style.transform=`translateX(-${p*100}vw)`;
 document.getElementById("dot0").classList.toggle("active",p===0);
 document.getElementById("dot1").classList.toggle("active",p===1);
-window.scrollTo(0,0); // asegura que nunca quede vacío arriba
 }
 
-/* Swipe inteligente */
 let startX=0,startY=0;
 
 slider.addEventListener("touchstart",e=>{
@@ -288,11 +371,24 @@ slider.addEventListener("touchend",e=>{
 let diffX=startX-e.changedTouches[0].clientX;
 let diffY=startY-e.changedTouches[0].clientY;
 
-if(Math.abs(diffX)>Math.abs(diffY) && Math.abs(diffX)>80){
-if(diffX>0 && current===0) goTo(1);
-if(diffX<0 && current===1) goTo(0);
+if(Math.abs(diffX)>Math.abs(diffY)){
+if(diffX>80 && current===0) goTo(1);
+if(diffX<-80 && current===1) goTo(0);
 }
 });
+
+const texts=[
+"🎥 Creator",
+"🌍 Vida en Bélgica",
+"🔥 Motivación diaria",
+"✨ Afelandro vibes"
+];
+
+let i=0;
+setInterval(()=>{
+i=(i+1)%texts.length;
+document.getElementById("creatorText").textContent=texts[i];
+},2500);
 
 </script>
 
