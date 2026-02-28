@@ -113,12 +113,9 @@ transition:.3s;
 cursor:pointer;
 }
 
-.profile-img:hover,
-.profile-img:active{
+.profile-img:hover{
 transform:scale(1.08);
-box-shadow:
-0 0 20px #5cc8ff,
-0 0 40px #9f7bff;
+box-shadow:0 0 20px #5cc8ff,0 0 40px #9f7bff;
 }
 
 /* ===== TEXTOS ===== */
@@ -186,51 +183,14 @@ cursor:pointer;
 transition:.3s;
 }
 
-/* INSTAGRAM */
 .instagram{background:linear-gradient(90deg,#ff3cac,#d85eff);}
-.instagram:hover,
-.instagram:active{
-transform:scale(1.05);
-box-shadow:0 0 15px #ff3cac,0 0 30px #d85eff;
-}
-
-/* FACEBOOK */
 .facebook{background:linear-gradient(90deg,#2f7fff,#54d2ff);}
-.facebook:hover,
-.facebook:active{
-transform:scale(1.05);
-box-shadow:0 0 15px #2f7fff,0 0 30px #54d2ff;
-}
-
-/* TIKTOK */
 .tiktok{background:linear-gradient(90deg,#000,#333);}
-.tiktok:hover,
-.tiktok:active{
-transform:scale(1.05);
-box-shadow:0 0 15px #ffffff,0 0 25px #cccccc;
-}
-
-/* LINKEDIN */
 .linkedin{background:linear-gradient(90deg,#0a66c2,#1da1ff);}
-.linkedin:hover,
-.linkedin:active{
-transform:scale(1.05);
-box-shadow:0 0 15px #0a66c2,0 0 30px #1da1ff;
-}
-
-/* YOUTUBE */
 .youtube{background:linear-gradient(90deg,#ff0000,#ff3b3b);}
-.youtube:hover,
-.youtube:active{
-transform:scale(1.05);
-box-shadow:0 0 15px #ff0000,0 0 35px #ff3b3b;
-}
 
-/* BOTÓN HISTORIA */
-.btn[href^="mailto"]:hover,
-.btn[href^="mailto"]:active{
+.btn-social:hover{
 transform:scale(1.05);
-box-shadow:0 0 18px #9f7bff,0 0 40px #7f5cff;
 }
 
 /* ===== PUBLICIDAD ===== */
@@ -247,7 +207,18 @@ transition:.3s;
 
 .ad-logo:hover{
 transform:scale(1.05);
-box-shadow:0 0 20px #9f7bff;
+}
+
+/* ===== FOOTER ===== */
+
+.footer{
+text-align:center;
+font-size:14px;
+margin-top:40px;
+padding:20px;
+background:linear-gradient(90deg,#f5c400,#ffdf00);
+color:#000;
+font-weight:500;
 }
 
 /* ===== INDICADORES ===== */
@@ -302,15 +273,15 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 <div class="creator-text" id="creatorText">🎥 Creator</div>
 
 <div class="video">
-<iframe src="https://www.youtube.com/embed/Pkvwv_Q50tk" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/6CYYrf7P3Tg?start=543" allowfullscreen></iframe>
 </div>
 
 <div class="social">
-<a class="btn-social instagram" href="https://www.instagram.com/afelandro2396/" target="_blank">Instagram</a>
-<a class="btn-social facebook" href="https://www.facebook.com/afelandro2396/" target="_blank">Facebook</a>
-<a class="btn-social tiktok" href="https://www.tiktok.com/@afelandro" target="_blank">TikTok</a>
-<a class="btn-social linkedin" href="https://www.linkedin.com/in/alejandro-alberto-juarez-alvarez-803275123/" target="_blank">LinkedIn</a>
-<a class="btn-social youtube" href="https://www.youtube.com/@afelandro4578" target="_blank">YouTube</a>
+<a class="btn-social instagram" href="https://www.instagram.com/afelandro2396/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a class="btn-social facebook" href="https://www.facebook.com/afelandro2396/" target="_blank" rel="noopener noreferrer">Facebook</a>
+<a class="btn-social tiktok" href="https://www.tiktok.com/@afelandro" target="_blank" rel="noopener noreferrer">TikTok</a>
+<a class="btn-social linkedin" href="https://www.linkedin.com/in/alejandro-alberto-juarez-alvarez-803275123/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<a class="btn-social youtube" href="https://www.youtube.com/@afelandro4578" target="_blank" rel="noopener noreferrer">YouTube</a>
 
 <a class="btn" href="mailto:afelandrochisme@gmail.com?subject=Quiero enviarte mi historia">
 ✉️ Enviar tu historia
@@ -330,7 +301,7 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 
 <h1 class="ad-title">🔥 Publicidad</h1>
 
-<a href="https://creativetouchshop.com/" target="_blank">
+<a href="https://creativetouchshop.com/" target="_blank" rel="noopener noreferrer">
 <img class="ad-logo"
 src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cropped-cropped-IMG_1562.png">
 </a>
@@ -343,12 +314,20 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/crop
 
 </div>
 
+<footer class="footer">
+© <span id="year"></span> Afelandro  
+<br>
+Powered by <strong>AFELANDROART</strong>
+</footer>
+
 <div class="indicators">
 <div class="dot active" id="dot0"></div>
 <div class="dot" id="dot1"></div>
 </div>
 
 <script>
+
+document.getElementById("year").textContent = new Date().getFullYear();
 
 let slider=document.getElementById("slider");
 let current=0;
