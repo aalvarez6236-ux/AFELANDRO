@@ -145,12 +145,13 @@ margin-top:-50px;
 }
 
 .profile-img{
-width:130px;
-height:130px;
+width:150px;
+height:150px;
 border-radius:50%;
 border:4px solid white;
-object-fit:contain;
-background:#fff;
+object-fit:cover;
+object-position:center;
+background:transparent;
 transition:.3s;
 }
 
@@ -179,6 +180,12 @@ height:200px;
 border:none;
 }
 
+
+/* ===== LISTA DE VIDEOS RECIENTES ===== */
+.video-list{display:flex;flex-direction:column;gap:14px;margin:15px 0;}
+.video-card{padding:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;text-align:left;}
+.video-title{font-size:15px;line-height:1.35;margin:0 0 9px;font-weight:bold;}
+.video-player{width:100%;height:200px;border:0;border-radius:12px;display:block;overflow:hidden;}
 /* ===== BOTONES ===== */
 
 .social{
@@ -325,7 +332,7 @@ width:24px;border-radius:20px;background:white;
 
 <div class="profile-wrapper">
 <img class="profile-img"
-src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92f946-3978-4fbc-b4e7-9f0fc1008f44.png">
+src="https://yt3.googleusercontent.com/ef9hFK_E5h2mH-ihNkgobmum6t1H8jveuvDESj_paKxlhGOeVlSR4NTdPZdwKx5ro-9NbOBv=s160-c-k-c0x00ffffff-no-rj" alt="Foto del canal de Afelandro">
 </div>
 
 <h1>Hola, soy Afelandro 🚀</h1>
@@ -361,8 +368,10 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 <div class="container">
 <h1 class="ad-title">🎬 Videos recientes</h1>
 <p class="video-note">Los videos del canal se muestran aquí. Cuando publiques uno nuevo, aparecerá en esta lista de YouTube.</p>
-<div class="video">
-<iframe class="video-frame" src="https://www.youtube.com/embed?listType=playlist&amp;list=UUPYHQ6Q_SiYLpHBCycmpR8A" title="Videos recientes de Afelandro" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="video-list" aria-label="Los tres videos más recientes del canal">
+<article class="video-card"><h2 class="video-title">LIBROS APOCRIFOS 2PARTE</h2><iframe class="video-player" src="https://www.youtube.com/embed/L4wvD05RTvk" title="LIBROS APOCRIFOS 2PARTE — Afelandro" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></article>
+<article class="video-card"><h2 class="video-title">LIBROS APOCRIFOS 1PARTE</h2><iframe class="video-player" src="https://www.youtube.com/embed/n6oyK71CuLM" title="LIBROS APOCRIFOS 1PARTE — Afelandro" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></article>
+<article class="video-card"><h2 class="video-title">MI JEFE SE INSINUA</h2><iframe class="video-player" src="https://www.youtube.com/embed/-P6wd_cbN4E" title="MI JEFE SE INSINUA — Afelandro" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></article>
 </div>
 <a class="channel-link" href="https://www.youtube.com/@afelandro4578" target="_blank" rel="noopener noreferrer">Ver canal completo en YouTube ↗</a>
 </div>
@@ -435,6 +444,9 @@ document.getElementById("creatorText").textContent=texts[i];
 
 </body>
 </html>
+
+
+
 
 
 
