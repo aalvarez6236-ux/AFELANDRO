@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Afelandro | Creator Hub</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -48,11 +49,60 @@ animation:freeBall 20s ease-in-out infinite alternate;
 100%{transform:translate(-120px,-100px);}
 }
 
+
+/* ===== NAVEGACIÓN POR PESTAÑAS ===== */
+.tab-nav{
+position:fixed;
+top:14px;
+left:50%;
+transform:translateX(-50%);
+z-index:10;
+display:flex;
+gap:6px;
+padding:6px;
+width:min(390px,calc(100% - 30px));
+box-sizing:border-box;
+background:rgba(35,34,91,.72);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.18);
+border-radius:30px;
+box-shadow:0 8px 24px rgba(0,0,0,.2);
+}
+
+.tab-nav button{
+flex:1;
+padding:10px 8px;
+border:0;
+border-radius:22px;
+background:transparent;
+color:rgba(255,255,255,.78);
+font:700 13px Arial,sans-serif;
+cursor:pointer;
+transition:.25s;
+}
+
+.tab-nav button:hover,.tab-nav button.active{
+background:rgba(255,255,255,.2);
+color:#fff;
+}
+
+.tab-nav button:focus-visible{outline:2px solid #ffb347;outline-offset:2px;}
+
+/* ===== VIDEOS DEL CANAL ===== */
+.video-note{font-size:14px;line-height:1.5;opacity:.9;margin:8px 0 16px;}
+.video-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;display:block;}
+.channel-link{display:inline-block;margin-top:14px;color:#fff;font-weight:bold;text-decoration:none;}
+.channel-link:hover{text-decoration:underline;}
+
+@media (prefers-reduced-motion:reduce){
+.floating-bg span{animation:none;}
+.slider{transition:none;}
+}
 /* ===== SLIDER ===== */
 
 .slider{
 display:flex;
-width:200vw;
+width:300vw;
 transition:0.6s cubic-bezier(.22,1,.36,1);
 }
 
@@ -255,9 +305,16 @@ width:24px;border-radius:20px;background:white;
 <body>
 
 <div class="floating-bg">
-<span></span><span></span><span></span>
-<span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span><span></span>
 </div>
+
+<nav class="tab-nav" aria-label="Navegación principal">
+<button type="button" class="active" aria-current="page" onclick="goTo(0)">Inicio</button>
+<button type="button" onclick="goTo(1)">Videos</button>
+<button type="button" onclick="goTo(2)">Publicidad</button>
+</nav>
 
 <div class="slider" id="slider">
 
@@ -276,7 +333,7 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 <div class="creator-text" id="creatorText">🎥 Creator</div>
 
 <div class="video">
-<iframe src="https://www.youtube.com/embed/147fbK4Ex6k" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/147fbK4Ex6k" title="Video de Afelandro" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 <div class="social">
@@ -291,13 +348,28 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/cd92
 </a>
 </div>
 
-<button class="btn" onclick="goTo(1)">Ver Publicidad ➡️</button>
+<button class="btn" onclick="goTo(1)">Ver Videos ➡️</button>
+<button class="btn" onclick="goTo(2)">Ver Publicidad ➡️</button>
 
 </div>
 </div>
 </div>
 
-<!-- PÁGINA 2 -->
+<!-- PÁGINA 2: VIDEOS RECIENTES -->
+<div class="page">
+<div class="content">
+<div class="container">
+<h1 class="ad-title">🎬 Videos recientes</h1>
+<p class="video-note">Los videos del canal se muestran aquí. Cuando publiques uno nuevo, aparecerá en esta lista de YouTube.</p>
+<div class="video">
+<iframe class="video-frame" src="https://www.youtube.com/embed?listType=user_uploads&amp;list=afelandro4578" title="Videos recientes de Afelandro" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<a class="channel-link" href="https://www.youtube.com/@afelandro4578" target="_blank" rel="noopener noreferrer">Ver canal completo en YouTube ↗</a>
+</div>
+</div>
+</div>
+
+<!-- PÁGINA 3: PUBLICIDAD -->
 <div class="page">
 <div class="content">
 <div class="container">
@@ -314,7 +386,9 @@ src="https://raw.githubusercontent.com/aalvarez6236-ux/PAGINA-LINK-BIO/main/crop
 src="https://raw.githubusercontent.com/aalvarez6236-ux/AFELANDRO/main/WhatsApp%20Image%202026-02-16%20at%2021.39.27.png">
 </a>
 
-<button class="btn" onclick="goTo(0)">⬅️ Volver</button>
+<button class="btn" onclick="goTo(0)">⬅️ Inicio</button>
+<button class="btn" onclick="goTo(1)">🎬 Ver Videos</button>
+
 
 </div>
 </div>
@@ -331,6 +405,7 @@ Powered by <strong>AFELANDROART</strong>
 <div class="indicators">
 <div class="dot active" id="dot0"></div>
 <div class="dot" id="dot1"></div>
+<div class="dot" id="dot2"></div>
 </div>
 
 <script>
@@ -342,8 +417,11 @@ let current=0;
 function goTo(p){
 current=p;
 slider.style.transform=`translateX(-${p*100}vw)`;
-document.getElementById("dot0").classList.toggle("active",p===0);
-document.getElementById("dot1").classList.toggle("active",p===1);
+document.querySelectorAll(".dot").forEach((dot,index)=>dot.classList.toggle("active",index===p));
+document.querySelectorAll(".tab-nav button").forEach((tab,index)=>{
+tab.classList.toggle("active",index===p);
+if(index===p){tab.setAttribute("aria-current","page");}else{tab.removeAttribute("aria-current");}
+});
 window.scrollTo({top:0});
 }
 
@@ -357,3 +435,8 @@ document.getElementById("creatorText").textContent=texts[i];
 
 </body>
 </html>
+
+
+
+
+
